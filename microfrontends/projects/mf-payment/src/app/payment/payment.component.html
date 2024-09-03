@@ -1,0 +1,74 @@
+<div class="payment-page">
+    <div class="payment-container">
+      <h2>Card details</h2>
+      <form (ngSubmit)="onSubmit()" #paymentForm="ngForm">
+        <!-- Card Number -->
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input
+            type="text"
+            id="cardNumber"
+            name="cardNumber"
+            [(ngModel)]="cardNumber"
+            required
+            pattern="^[0-9]{16}$"
+            class="form-control"
+            placeholder="1234 5678 9012 3456"
+            maxlength="16"
+          />
+        </div>
+  
+        <!-- Expiry Date and CVV -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input
+              type="text"
+              id="expiryDate"
+              name="expiryDate"
+              [(ngModel)]="expiryDate"
+              required
+              pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$"
+              class="form-control"
+              placeholder="MM/YY"
+              maxlength="5"
+            />
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input
+              type="text"
+              id="cvv"
+              name="cvv"
+              [(ngModel)]="cvv"
+              required
+              pattern="^[0-9]{3}$"
+              class="form-control"
+              placeholder="123"
+              maxlength="3"
+            />
+          </div>
+        </div>
+  
+        <!-- Cardholder Name -->
+        <div class="form-group">
+            <label for="cardName">Cardholder Name</label>
+            <input
+              type="text"
+              id="cardName"
+              name="cardName"
+              [(ngModel)]="cardName"
+              required
+              minlength="3"
+              class="form-control"
+              placeholder="Andrei Popescu"
+            />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-button" [disabled]="!paymentForm.form.valid">
+          <i class="fas fa-lock"></i> Pay Now
+        </button>
+      </form>
+    </div>
+</div>

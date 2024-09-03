@@ -1,0 +1,311 @@
+$primary: #8bc34a;
+$secondary: #ff5722;
+$background: #ffffff;
+$text-color: #333333;
+$button-bg: #607d8b;
+$overlay-bg: rgba(50, 50, 50, 0.7);
+
+.storefront {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $background;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      width: 70%;
+
+      .dropdown {
+        padding: 8px;
+        margin-right: 10px;
+        border: 1px solid $primary;
+        border-radius: 5px;
+        font-size: 15px;
+        color: $text-color;
+        background-color: $background;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: darken($primary, 15%);
+          outline: none;
+        }
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid $primary;
+        border-radius: 5px;
+        font-size: 15px;
+        color: $text-color;
+        background-color: $background;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: darken($primary, 15%);
+          outline: none;
+        }
+      }
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+
+      .cart-btn, .signout-btn {
+        padding: 8px 18px;
+        border: none;
+        border-radius: 5px;
+        color: $background;
+        font-size: 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s;
+
+        i {
+          margin-right: 6px;
+        }
+
+        &:hover {
+          background-color: darken($primary, 15%);
+        }
+      }
+
+      .cart-btn {
+        background-color: $primary;
+        margin-right: 10px;
+      }
+
+      .signout-btn {
+        background-color: $secondary;
+
+        &:hover {
+          background-color: darken($secondary, 15%);
+        }
+      }
+    }
+  }
+
+  .cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $overlay-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .cart-content {
+      background-color: $background;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      width: 85%;
+      max-width: 550px;
+      position: relative;
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      h2 {
+        margin-top: 0;
+        color: $text-color;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+          border-bottom: 1px solid #ddd;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          span {
+            flex: 1;
+            font-size: 15px;
+            color: $text-color;
+          }
+
+          .remove-btn {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: lighten($primary, 20%);
+            color: $background;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            i {
+              margin: 0;
+            }
+
+            &:hover {
+              background-color: lighten($primary, 10%);
+            }
+          }
+        }
+      }
+
+      .cart-total {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px solid #ddd;
+        text-align: right;
+
+        h3 {
+          color: $text-color;
+          font-size: 18px;
+          margin: 0;
+        }
+      }
+
+      .cart-actions {
+        margin-top: 20px;
+        text-align: center;
+
+        .payment-button {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          background-color: $primary;
+          color: $background;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          i {
+            margin-right: 8px;
+          }
+
+          &:hover {
+            background-color: darken($primary, 15%);
+          }
+        }
+      }
+    }
+  }
+
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+
+    .item-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: $background;
+      position: relative;
+      padding-bottom: 50px;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      .item-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 20px;
+      }
+
+      .item-details {
+        padding: 20px;
+        text-align: center;
+
+        h3 {
+          margin: 12px 0;
+          font-size: 18px;
+          color: $text-color;
+        }
+
+        p {
+          color: $secondary;
+          font-size: 14px;
+
+          &.item-price {
+            color: $text-color;
+            font-weight: bold;
+            margin: 10px 0;
+          }
+
+          &.item-expiry {
+            color: darken($secondary, 15%);
+            font-size: 12px;
+            margin-top: 5px;
+          }
+
+          &.item-seller {
+            color: $text-color;
+            font-size: 13px;
+            margin-top: 5px;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .add-btn {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        background-color: $button-bg;
+        color: $background;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-right: 6px;
+        }
+
+        &:hover {
+          background-color: darken($button-bg, 15%);
+        }
+      }
+    }
+  }
+}

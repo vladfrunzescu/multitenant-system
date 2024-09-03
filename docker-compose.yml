@@ -1,0 +1,103 @@
+services:
+
+  server-db:
+    image: postgres:16.1
+    container_name: server-db
+    environment:
+      POSTGRES_DB: server_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5432:5432
+    networks:
+      - system-network
+
+  e-food-db:
+    image: postgres:16.1
+    container_name: e-food-db
+    environment:
+      POSTGRES_DB: e_food_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5433:5432
+    networks:
+      - system-network
+
+  e-market-db:
+    image: postgres:16.1
+    container_name: e-market-db
+    environment:
+      POSTGRES_DB: e_market_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5434:5432
+    networks:
+      - system-network
+
+  java_server:
+    depends_on:
+      - server-db
+      - e-food-db
+      - e-market-db
+    build: ./java_server
+    restart: on-failure
+    container_name: java_server-app
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://server-db:5432/server_database
+      E_FOOD_DATASOURCE_URL: jdbc:postgresql://e-food-db:5432/e_food_database
+      E_MARKET_DATASOURCE_URL: jdbc:postgresql://e-market-db:5432/e_market_database
+    ports:
+      - 8082:8082
+    links:
+      - server-db
+      - e-food-db
+      - e-market-db
+    networks:
+      - system-network
+
+  shell:
+    build:
+      context: ./microfrontends
+      dockerfile: Dockerfile
+    command: ["ng", "serve", "shell", "--host", "0.0.0.0", "--port", "4200"]
+    ports:
+      - "4200:4200"
+#      - "80:4200"
+    networks:
+      - system-network
+
+  mf-payment:
+    build:
+      context: ./microfrontends
+      dockerfile: Dockerfile
+    command: ["ng", "serve", "mf-payment", "--host", "0.0.0.0", "--port", "4202"]
+    ports:
+      - "4202:4202"
+    networks:
+      - system-network
+
+  mf-e-food:
+    build:
+      context: ./microfrontends
+      dockerfile: Dockerfile
+    command: ["ng", "serve", "mf-e-food", "--host", "0.0.0.0", "--port", "4203"]
+    ports:
+      - "4203:4203"
+    networks:
+      - system-network
+
+  mf-e-market:
+    build:
+      context: ./microfrontends
+      dockerfile: Dockerfile
+    command: ["ng", "serve", "mf-e-market", "--host", "0.0.0.0", "--port", "4204"]
+    ports:
+      - "4204:4204"
+    networks:
+        - system-network
+
+networks:
+  system-network:
+    driver: bridge

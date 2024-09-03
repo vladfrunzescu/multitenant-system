@@ -1,0 +1,136 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: frunzescuvlad
+      changes:
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Pizza
+              - column:
+                  name: description
+                  value: Cheesy pizza with toppings
+              - column:
+                  name: price
+                  value: 12.99
+              - column:
+                  name: image_link
+                  value: https://kitchenatics.com/wp-content/uploads/2020/09/Cheese-pizza-1.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"category": "pizza"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: Burger
+              - column:
+                  name: description
+                  value: Juicy beef burger
+              - column:
+                  name: price
+                  value: 9.99
+              - column:
+                  name: image_link
+                  value: https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/1:1/w_2560%2Cc_limit/Smashburger-recipe-120219.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"category": "burger"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: Sushi
+              - column:
+                  name: description
+                  value: Fresh sushi rolls
+              - column:
+                  name: price
+                  value: 15.99
+              - column:
+                  name: image_link
+                  value: https://www.heinens.com/content/uploads/2023/06/Tuna-Sushi-Rolls-800x550-1.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"category": "sushi"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: name
+                  value: Pizza Prosciutto e Funghi
+              - column:
+                  name: description
+                  value: Pizza Prosciutto e Funghi with toppings
+              - column:
+                  name: price
+                  value: 14.99
+              - column:
+                  name: image_link
+                  value: https://pizzachezboubou.ch/wp-content/uploads/sites/68/2020/07/Pizza-Prosciutto-E-Funghi.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"category": "pizza"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: name
+                  value: Burger with fries
+              - column:
+                  name: description
+                  value: Menu consisting of burger and fries
+              - column:
+                  name: price
+                  value: 21.50
+              - column:
+                  name: image_link
+                  value: https://www.cavendishfarms.com/globalassets/for-your-home/recipes/burger--fries.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"category": "burger"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: name
+                  value: Soup
+              - column:
+                  name: description
+                  value: Chef's best soup
+              - column:
+                  name: price
+                  value: 10.00
+              - column:
+                  name: image_link
+                  value: https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2023/10/Chicken-Soup-main-2.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"category": "soup"}'

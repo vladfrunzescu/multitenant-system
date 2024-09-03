@@ -1,0 +1,92 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: frunzescuvlad
+      changes:
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Espresso
+              - column:
+                  name: description
+                  value: Espresso machine for quality coffee, ideal for home or office use.
+              - column:
+                  name: price
+                  value: 329.9900
+              - column:
+                  name: image_link
+                  value: https://lcdn.altex.ro/resize/media/catalog/product/e/x/2bd48d28d1c32adea0e55139a4e6434a/exsep332440_4_d73e5cfb.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"type": "Coffee machines", "seller": "Philips", "offerValidUntil": "08/15/2025"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: Mixer
+              - column:
+                  name: description
+                  value: Kitchen mixer for effortless mixing, ideal for home or professional kitchens.
+              - column:
+                  name: price
+                  value: 614.9900
+              - column:
+                  name: image_link
+                  value: https://s13emagst.akamaized.net/products/59297/59296380/images/res_b7e9635ec6ffd27254a25cf78a68ffe9.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"type": "Kitchen appliances", "seller": "Kitchenaid", "offerValidUntil": "12/12/2024"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: Air Fryer
+              - column:
+                  name: description
+                  value: Air fryer for healthier cooking, perfect for home or small kitchens.
+              - column:
+                  name: price
+                  value: 145.0000
+              - column:
+                  name: image_link
+                  value: https://www.alleop.ro/123356-large_default/friteuza-cu-aer-cald-airfryer-oliver-voltz-ov51980q-1500w-5l-wi-fi-timer-80-200c-negru.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"type": "Kitchen appliances", "seller": "Voltz", "offerValidUntil": "09/20/2027"}'
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: name
+                  value: Fridge
+              - column:
+                  name: description
+                  value: Fridge for reliable cooling, suitable for home or office spaces.
+              - column:
+                  name: price
+                  value: 1754.9900
+              - column:
+                  name: image_link
+                  value: https://www.lg.com/ro/images/aparate-frigorifice/md07522551/gallery/N01_M-1.jpg
+              - column:
+                  name: tenant_specific_attributes
+                  value: '{"type": "Kitchen appliances", "seller": "LG", "offerValidUntil": "01/01/2025"}'

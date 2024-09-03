@@ -1,0 +1,63 @@
+<div class="storefront">
+  <header class="navbar">
+    <div class="search-box">
+      <!-- Type Filter -->
+      <select [(ngModel)]="selectedType" (change)="filterProducts()" class="dropdown">
+        <option value="">All Types</option>
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+
+      <!-- Seller Filter -->
+      <select [(ngModel)]="selectedSeller" (change)="filterProducts()" class="dropdown">
+        <option value="">All Sellers</option>
+        <option *ngFor="let seller of sellers" [value]="seller">{{ seller }}</option>
+      </select>
+
+      <!-- Search Input -->
+      <input type="text" placeholder="Search..." [(ngModel)]="searchText" (input)="filterProducts()" class="search-input">
+    </div>
+    <div class="user-actions">
+      <button class="cart-btn" (click)="toggleCart()"><i class="fas fa-shopping-cart"></i> ({{ cart.length }})</button>
+      <button class="signout-btn" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+    </div>
+  </header>
+
+  <div class="cart-overlay" *ngIf="isCartVisible">
+    <div class="cart-content">
+      <span class="close-btn" (click)="toggleCart()">&times;</span>
+      <h2>Your Cart</h2>
+      <ul>
+        <li *ngFor="let item of cart">
+          <span [title]="item.product.name">
+            {{ getTruncatedName(item.product.name) }} - {{item.product.price | currency}} (x{{item.quantity}})
+          </span>
+          <button class="remove-btn" (click)="removeFromCart(item.product.id)"><i class="fas fa-trash-alt"></i></button>
+        </li>
+      </ul>
+
+      <div class="cart-total">
+        <h3>Total Amount: {{ getTotalAmount() | currency }}</h3>
+      </div>
+
+      <div class="cart-actions">
+        <button class="payment-button" (click)="goToPayment()">
+          <i class="fas fa-credit-card"></i> Go to Payment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section class="items-grid">
+    <div *ngFor="let product of filteredProducts" class="item-card">
+      <img [src]="product.imageLink" alt="{{ product.name }}" class="item-img">
+      <div class="item-details">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="item-price">${{ product.price.toFixed(2) }}</p>
+        <p class="item-seller">Sold by: {{ product.tenantSpecificAttributes.seller }}</p>
+        <p class="item-expiry">Offer valid until: {{ product.tenantSpecificAttributes.offerValidUntil | date:'shortDate' }}</p>
+        <button (click)="addToCart(product)" class="add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+      </div>
+    </div>
+  </section>
+</div>
